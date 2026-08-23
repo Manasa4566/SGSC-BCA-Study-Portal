@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SGSC BCA Study Portal(R-NEP)</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+}
+
+html, body{
+    min-height:100%;
+}
+
+body{
+    background:#f4f7fb;
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+}
+
+/* Header */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 50px;
+    background:#003366;
+    color:white;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+}
+
+.logo-circle{
+    width:60px;
+    height:60px;
+    background:#ff9800;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-right:15px;
+    font-weight:bold;
+}
+
+.search input{
+    padding:10px;
+    width:280px;
+    border-radius:20px;
+    border:none;
+}
+
+.login-btn{
+    background:#ff9800;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:20px;
+}
+
+/* Home */
+
+.hero{
+    text-align:center;
+    padding:50px;
+}
+
+.hero h1{
+    color:#003366;
+}
+
+.semester-grid{
+    margin:40px;
+    display:grid;
+    grid-template-columns:repeat(3,180px);
+    justify-content:center;
+    gap:20px;
+}
+
+.semester-grid button{
+    padding:15px;
+    background:#003366;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.semester-grid button:hover{
+    background:#ff9800;
+}
+
+/* Content */
+
+#content{
+    flex:1;
+}
+
+.box{
+    width:450px;
+    margin:20px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 5px 15px #ccc;
+}
+
+.item{
+    background:#003366;
+    color:white;
+    padding:15px;
+    margin:10px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.item:hover{
+    background:#ff9800;
+}
+
+/* Back Button */
+
+.back-btn{
+    background:#ff9800;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-bottom:15px;
+    font-weight:bold;
+}
+
+.back-btn:hover{
+    background:#003366;
+}
+
+footer{
+    background:#003366;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+
+<div class="logo-circle">
+BCA
+</div>
+
+<div>
+<h2>SGSC Bhatkal</h2>
+<p>Complete Notes (R-NEP)</p>
+</div>
+
+</div>
+
+<div class="search">
+<input placeholder="Search Notes">
+</div>
+
+<button class="login-btn">
+Login
+</button>
+
+</nav>
+
+
+<div class="hero">
+
+<h1>
+Welcome to SGSC BCA Study Portal
+</h1>
+
+<p>Karnataka University Dharwad (Revised NEP)</p>
+
+<div class="semester-grid">
+
+<button onclick="semester(1)">Semester 1</button>
+<button onclick="semester(2)">Semester 2</button>
+<button onclick="semester(3)">Semester 3</button>
+<button onclick="semester(4)">Semester 4</button>
+<button onclick="semester(5)">Semester 5</button>
+<button onclick="semester(6)">Semester 6</button>
+
+</div>
+
+</div>
+
+
+<div id="content"></div>
+
+
+<footer>
+
+© 2026 SGSC Bhatkal BCA Complete Notes (R-NEP)
+
+</footer>
+
+
+<script>
+
+let subjects={
+
+1:[
+"Algorithm",
+"C Programming",
+"SMS",
+"Constitution Values",
+"English",
+"Kannada"
+],
+
+2:[
+"Data Structure",
+"Probability",
+"Python",
+"Constitution",
+"Kannada",
+"English"
+],
+
+3:[
+"Java",
+"Web Technology",
+"Principles of Accounting",
+"English",
+"Kannada"
+],
+
+4:[
+"Data Communication",
+"DBMS",
+"Computer Graphics",
+"Kannada",
+"English"
+],
+
+5:[
+"Cryptography and Information Security",
+"Research Methodology",
+"Machine Learning",
+"Software Engineering",
+"Web Content Management System"
+],
+
+6:[
+"Subject 1",
+"Subject 2",
+"Subject 3",
+"Subject 4",
+"Subject 5",
+"Main Project"
+]
+
+};
+
+
+function semester(no){
+
+let html=
+`
+<div class="box">
+
+<button class="back-btn" onclick="goHome()">← Back</button>
+
+<h2>Semester ${no}</h2>
+`;
+
+subjects[no].forEach(function(sub){
+
+html+=
+`
+<div class="item"
+onclick="subject('${sub}', ${no})">
+
+► ${sub}
+
+</div>
+`;
+
+});
+
+html+="</div>";
+
+document.getElementById("content").innerHTML=html;
+
+}
+
+
+function subject(name, sem){
+
+let html=
+`
+<div class="box">
+
+<button class="back-btn" onclick="semester(${sem})">← Back</button>
+
+<h2>${name}</h2>
+`;
+
+
+/* Kannada */
+
+if(name === "Kannada"){
+
+html+=
+`
+<div class="item">📚 Notes</div>
+`;
+
+}
+
+
+/* English */
+
+else if(name === "English"){
+
+html+=
+`
+<div class="item">📚 Notes</div>
+
+<div class="item">✍ Grammar</div>
+`;
+
+}
+
+
+/* Main Project */
+
+else if(name === "Main Project"){
+
+html+=
+`
+<div class="item">📘 Project Details</div>
+
+<div class="item">💻 Source Code</div>
+
+<div class="item">📄 Project Report</div>
+
+<div class="item">🎥 Project Presentation</div>
+`;
+
+}
+
+
+/* Other Subjects */
+
+else{
+
+html+=
+`
+<div class="item">📘 Syllabus</div>
+
+<div class="item">💻 Program List</div>
+
+<div class="item">🖥 Programs</div>
+
+<div class="item">📚 Unit Wise Notes</div>
+
+<div class="item">📄 Previous Year Question Papers</div>
+
+<div class="item">🎥 Video Links</div>
+`;
+
+}
+
+html+=
+`
+</div>
+`;
+
+document.getElementById("content").innerHTML=html;
+
+}
+
+
+function goHome(){
+
+document.getElementById("content").innerHTML="";
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+</script>
+
+</body>
+</html>
