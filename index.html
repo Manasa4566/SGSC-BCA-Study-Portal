@@ -395,17 +395,7 @@ document.getElementById("content").innerHTML=html;
 }
 
 
-function goHome(){
-
-document.getElementById("content").innerHTML="";
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-    function javaNotes(){
+function javaNotes(){
 
 let html=
 `
@@ -415,7 +405,7 @@ let html=
 
 <h2>Java - Unit Wise Notes</h2>
 
-<a href="UNIT1java.pdf"
+<a href="./UNIT1java.pdf"
 target="_blank"
 class="item"
 style="display:block;text-decoration:none;">
@@ -423,12 +413,13 @@ style="display:block;text-decoration:none;">
 📚 UNIT-1 Java PDF
 
 </a>
+
 </div>
 `;
 
 document.getElementById("content").innerHTML=html;
 
-    }
+}
 
 </script>
 
