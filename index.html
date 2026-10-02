@@ -144,30 +144,29 @@ footer{
     padding:20px;
     text-align:center;
 }
-    .search-box{
+.search-box{
     display:flex;
-    justify-content:center;
-    gap:10px;
-    margin:25px auto;
-    width:90%;
-    max-width:600px;
+    align-items:center;
+    gap:8px;
+    margin:0;
+    width:300px;
 }
 
 .search-box input{
-    flex:1;
-    padding:12px 15px;
-    border:2px solid #003366;
-    border-radius:8px;
-    font-size:15px;
+    width:220px;
+    padding:10px 15px;
+    border:none;
+    border-radius:20px;
+    font-size:14px;
     outline:none;
 }
 
 .search-box button{
-    padding:12px 22px;
+    padding:10px 15px;
     background:#ff9800;
     color:white;
     border:none;
-    border-radius:8px;
+    border-radius:20px;
     cursor:pointer;
     font-weight:bold;
 }
@@ -175,7 +174,6 @@ footer{
 .search-box button:hover{
     background:#e68900;
 }
-
 #searchResults{
     width:90%;
     max-width:600px;
@@ -216,6 +214,13 @@ footer{
 
     </div>
 
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search Notes">
+        <button onclick="searchNotes()">Search</button>
+    </div>
+
+    <button class="login-btn">Login</button>
+
 </nav>
 
 <div class="hero">
@@ -225,12 +230,7 @@ Welcome to SGSC BCA Study Portal
 </h1>
 
 <p>Karnataka University Dharwad (Revised NEP)</p>
-<div class="search-box">
-    <input type="text" id="searchInput" placeholder="🔍 Search notes or subject...">
-    <button onclick="searchNotes()">Search</button>
-</div>
 
-<div id="searchResults"></div>
 <div class="semester-grid">
 
 <button onclick="semester(1)">Semester 1</button>
