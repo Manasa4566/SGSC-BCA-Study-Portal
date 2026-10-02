@@ -625,7 +625,8 @@ let searchData = [
 }
 
 ];
-function searchNotes(){
+
+        function searchNotes(){
 
     let search = document.getElementById("searchInput").value
         .toLowerCase()
@@ -636,14 +637,17 @@ function searchNotes(){
     results.innerHTML = "";
 
     if(search === ""){
+
         results.innerHTML =
             "<p style='text-align:center;padding:10px;'>Please enter a subject or note name.</p>";
+
         return;
     }
 
     let found = [];
 
-    /* Search subjects */
+
+    /* Search Subjects */
 
     for(let sem in subjects){
 
@@ -652,11 +656,13 @@ function searchNotes(){
             if(sub.toLowerCase().includes(search)){
 
                 found.push({
+
                     name: sub,
                     subject: sub,
                     semester: sem,
                     type: "Subject",
                     link: null
+
                 });
 
             }
@@ -666,7 +672,7 @@ function searchNotes(){
     }
 
 
-    /* Search notes and files */
+    /* Search All Files */
 
     searchData.forEach(function(item){
 
@@ -685,7 +691,7 @@ function searchNotes(){
     });
 
 
-    /* No results */
+    /* No Results */
 
     if(found.length === 0){
 
@@ -696,7 +702,7 @@ function searchNotes(){
     }
 
 
-    /* Show results */
+    /* Display Results */
 
     found.forEach(function(item){
 
@@ -715,7 +721,7 @@ function searchNotes(){
 
         div.onclick = function(){
 
-            /* Open subject */
+            /* Open Subject */
 
             if(item.type === "Subject"){
 
@@ -726,7 +732,7 @@ function searchNotes(){
 
             }
 
-            /* Open PDF / image */
+            /* Open File */
 
             else{
 
@@ -746,7 +752,7 @@ function searchNotes(){
 
     });
 
-}
+        }
 
 function semester(no){
 
