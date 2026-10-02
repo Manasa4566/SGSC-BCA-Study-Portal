@@ -144,6 +144,58 @@ footer{
     padding:20px;
     text-align:center;
 }
+    .search-box{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:25px auto;
+    width:90%;
+    max-width:600px;
+}
+
+.search-box input{
+    flex:1;
+    padding:12px 15px;
+    border:2px solid #003366;
+    border-radius:8px;
+    font-size:15px;
+    outline:none;
+}
+
+.search-box button{
+    padding:12px 22px;
+    background:#ff9800;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.search-box button:hover{
+    background:#e68900;
+}
+
+#searchResults{
+    width:90%;
+    max-width:600px;
+    margin:15px auto;
+}
+
+.search-result{
+    display:block;
+    background:#003366;
+    color:white;
+    padding:12px;
+    margin:8px 0;
+    border-radius:8px;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.search-result:hover{
+    background:#ff9800;
+}
 
 </style>
 </head>
@@ -259,7 +311,70 @@ let subjects={
 ]
 
 };
+function searchNotes(){
 
+    let search = document.getElementById("searchInput").value
+        .toLowerCase()
+        .trim();
+
+    let results = document.getElementById("searchResults");
+
+    results.innerHTML = "";
+
+    if(search === ""){
+        results.innerHTML = "<p style='text-align:center;'>Please enter a subject or note name.</p>";
+        return;
+    }
+
+    let found = [];
+
+    for(let sem in subjects){
+
+        subjects[sem].forEach(function(sub){
+
+            if(sub.toLowerCase().includes(search)){
+                found.push({
+                    name: sub,
+                    semester: sem
+                });
+            }
+
+        });
+
+    }
+
+    if(found.length === 0){
+
+        results.innerHTML =
+            "<p style='text-align:center;'>❌ No notes found.</p>";
+
+        return;
+    }
+
+    found.forEach(function(item){
+
+        let div = document.createElement("div");
+
+        div.className = "search-result";
+
+        div.innerHTML =
+            "📚 " + item.name +
+            " <small>(Semester " + item.semester + ")</small>";
+
+        div.onclick = function(){
+
+            subject(item.name, Number(item.semester));
+
+            document.getElementById("searchResults").innerHTML = "";
+
+            document.getElementById("searchInput").value = "";
+
+        };
+
+        results.appendChild(div);
+
+    });
+}
 
 function semester(no){
 
