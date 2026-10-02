@@ -144,80 +144,37 @@ footer{
     padding:20px;
     text-align:center;
 }
-#searchResults{
+/* Search Box */
 
-
-.search-box input{
-    width:220px;
-    padding:10px 15px;
-    border:none;
-    border-radius:20px;
-    font-size:14px;
-    outline:none;
-}
-
-.search-box button{
-    padding:10px 15px;
-    background:#ff9800;
-    color:white;
-    border:none;
-    border-radius:20px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.search-box button:hover{
-    background:#e68900;
-}
-#searchResults{
-    position:absolute;
-    top:48px;
-    left:0;
-    width:300px;
-    background:white;
-    border-radius:10px;
-    padding:5px;
-    z-index:1000;
-    box-shadow:0 5px 15px rgba(0,0,0,0.25);
-}
-
-.search-result{
-    display:block;
-    background:#003366;
-    color:white;
-    padding:12px;
-    margin:8px 0;
-    border-radius:8px;
-    text-decoration:none;
-    cursor:pointer;
-}
-
-.search-result:hover{
-    background:#ff9800;
-}
-    .search-box{
+.search-box{
     position:relative;
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:6px;
 }
 
 .search-box input{
     width:220px;
     padding:10px 15px;
-    border:none;
+    border:2px solid #003366;
     border-radius:20px;
     font-size:14px;
     outline:none;
+    background:white;
+}
+
+.search-box input:focus{
+    border-color:#ff9800;
 }
 
 .search-box button{
-    padding:10px 15px;
+    padding:9px 13px;
     background:#ff9800;
     color:white;
     border:none;
     border-radius:20px;
     cursor:pointer;
+    font-size:13px;
     font-weight:bold;
 }
 
@@ -225,11 +182,15 @@ footer{
     background:#e68900;
 }
 
+/* Search Results */
+
 #searchResults{
     position:absolute;
     top:48px;
     left:0;
     width:300px;
+    max-height:350px;
+    overflow-y:auto;
     background:white;
     border-radius:10px;
     padding:5px;
@@ -241,18 +202,24 @@ footer{
     display:block;
     background:#003366;
     color:white;
-    padding:12px;
-    margin:8px 0;
+    padding:10px 12px;
+    margin:6px 0;
     border-radius:8px;
     text-decoration:none;
     cursor:pointer;
+    font-size:14px;
 }
 
 .search-result:hover{
     background:#ff9800;
 }
 
-</style>
+.search-result small{
+    display:block;
+    margin-top:3px;
+    opacity:0.85;
+}
+    </style>
 </head>
 
 <body>
@@ -373,6 +340,291 @@ let subjects={
 ]
 
 };
+    /* SEARCHABLE NOTES AND FILES */
+
+let searchData = [
+
+{
+    name:"Algorithm Syllabus",
+    subject:"Algorithm",
+    semester:1,
+    type:"File",
+    link:"AlgorithmSyllabus.jpg"
+},
+
+{
+    name:"Algorithm Unit 1 and Unit 2 Notes",
+    subject:"Algorithm",
+    semester:1,
+    type:"File",
+    link:"Algorithm1and2UnitNotes.pdf_compress.pdf"
+},
+
+{
+    name:"Sorting Notes",
+    subject:"Algorithm",
+    semester:1,
+    type:"File",
+    link:"sorting.pdf"
+},
+
+{
+    name:"Array Technique",
+    subject:"Algorithm",
+    semester:1,
+    type:"File",
+    link:"ArrayTechniques.pdf"
+},
+
+{
+    name:"Algorithm Programs",
+    subject:"Algorithm",
+    semester:1,
+    type:"File",
+    link:"AlgorithmProgram.pdf"
+},
+
+{
+    name:"Algorithm 2025 Question Paper",
+    subject:"Algorithm",
+    semester:1,
+    type:"File",
+    link:"algopvq2025.pdf"
+},
+
+{
+    name:"C Programming Syllabus",
+    subject:"C Programming",
+    semester:1,
+    type:"File",
+    link:"csyllabus.pdf"
+},
+
+{
+    name:"C Unit 1 Notes",
+    subject:"C Programming",
+    semester:1,
+    type:"File",
+    link:"cFundamentalNotesUnit1.pdf"
+},
+
+{
+    name:"C Function Notes",
+    subject:"C Programming",
+    semester:1,
+    type:"File",
+    link:"FunctionNotes.pdf"
+},
+
+{
+    name:"C Unit 2 and Unit 3 Notes",
+    subject:"C Programming",
+    semester:1,
+    type:"File",
+    link:"CNotes2and3.pdf.pdf"
+},
+
+{
+    name:"C Programs",
+    subject:"C Programming",
+    semester:1,
+    type:"File",
+    link:"CPrograms.pdf"
+},
+
+{
+    name:"Data Structure Syllabus",
+    subject:"Data Structure",
+    semester:2,
+    type:"File",
+    link:"Dssyllabus.pdf.pdf"
+},
+
+{
+    name:"Data Structure Unit 1 and Unit 3 Notes",
+    subject:"Data Structure",
+    semester:2,
+    type:"File",
+    link:"DSunit1ANDunit3_compress.pdf"
+},
+
+{
+    name:"Searching and Sorting Unit 2",
+    subject:"Data Structure",
+    semester:2,
+    type:"File",
+    link:"searchingandsorting.pdf"
+},
+
+{
+    name:"Data Structure Unit 4 Linked List and Trees",
+    subject:"Data Structure",
+    semester:2,
+    type:"File",
+    link:"DSunit4(linkedListandTrees).pdf"
+},
+
+{
+    name:"Data Structure Full Notes",
+    subject:"Data Structure",
+    semester:2,
+    type:"File",
+    link:"Data Structures Full Notes_copy.pdf"
+},
+
+{
+    name:"Python Syllabus",
+    subject:"Python",
+    semester:2,
+    type:"File",
+    link:"PythonSyllabus.pdf"
+},
+
+{
+    name:"Python Program List",
+    subject:"Python",
+    semester:2,
+    type:"File",
+    link:"PythonProgramList.pdf"
+},
+
+{
+    name:"Python Programs",
+    subject:"Python",
+    semester:2,
+    type:"File",
+    link:"PythonPrograms_compress.pdf"
+},
+
+{
+    name:"Python All Notes",
+    subject:"Python",
+    semester:2,
+    type:"File",
+    link:"PythonAllNotes_compress.pdf"
+},
+
+{
+    name:"Java Syllabus",
+    subject:"Java",
+    semester:3,
+    type:"File",
+    link:"Javasyllabus.pdf"
+},
+
+{
+    name:"Java Unit 1 Notes",
+    subject:"Java",
+    semester:3,
+    type:"File",
+    link:"UNIT1java.pdf"
+},
+
+{
+    name:"Java Unit 2 Class Object Method Notes",
+    subject:"Java",
+    semester:3,
+    type:"File",
+    link:"UNIT2CLASSOBJECTMETHOD.pdf"
+},
+
+{
+    name:"Java Unit 3 Notes",
+    subject:"Java",
+    semester:3,
+    type:"File",
+    link:"javaunit-3.pdf"
+},
+
+{
+    name:"Java Unit 4 Notes",
+    subject:"Java",
+    semester:3,
+    type:"File",
+    link:"javaunit4.pdf"
+},
+
+{
+    name:"Data Communication Syllabus",
+    subject:"Data Communication",
+    semester:4,
+    type:"File",
+    link:"DcSyllabus.pdf"
+},
+
+{
+    name:"Data Communication Unit 1 and Transmission Media",
+    subject:"Data Communication",
+    semester:4,
+    type:"File",
+    link:"DcUnit1AndtransmissionMedium_compress.pdf"
+},
+
+{
+    name:"Data Communication Unit 2 Unit 3 Unit 4",
+    subject:"Data Communication",
+    semester:4,
+    type:"File",
+    link:"DCremainingAllNotes_compress.pdf"
+},
+
+{
+    name:"DBMS Syllabus",
+    subject:"DBMS",
+    semester:4,
+    type:"File",
+    link:"DBMSsyllabus.pdf"
+},
+
+{
+    name:"DBMS Notes",
+    subject:"DBMS",
+    semester:4,
+    type:"File",
+    link:"DBMSnotes_compress.pdf"
+},
+
+{
+    name:"DBMS Programs",
+    subject:"DBMS",
+    semester:4,
+    type:"File",
+    link:"DBMSprogram.pdf"
+},
+
+{
+    name:"English 4 Notes",
+    subject:"English4",
+    semester:4,
+    type:"File",
+    link:"English4Notes_compress.pdf"
+},
+
+{
+    name:"Cryptography Syllabus",
+    subject:"Cryptography and Information Security",
+    semester:5,
+    type:"File",
+    link:"CryptographySyllabus.pdf"
+},
+
+{
+    name:"Software Engineering Syllabus",
+    subject:"Software Engineering",
+    semester:5,
+    type:"File",
+    link:"SESyllabus.pdf"
+},
+
+{
+    name:"WCMSS Syllabus",
+    subject:"Web Content Management System",
+    semester:5,
+    type:"File",
+    link:"WCMSSyllabus.pdf"
+}
+
+];
 function searchNotes(){
 
     let search = document.getElementById("searchInput").value
