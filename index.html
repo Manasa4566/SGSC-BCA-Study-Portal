@@ -144,12 +144,16 @@ footer{
     padding:20px;
     text-align:center;
 }
-.search-box{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    margin:0;
+#searchResults{
+    position:absolute;
+    top:50px;
+    left:0;
     width:300px;
+    background:white;
+    border-radius:8px;
+    padding:5px;
+    z-index:1000;
+    box-shadow:0 5px 15px #333;
 }
 
 .search-box input{
@@ -215,8 +219,13 @@ footer{
     </div>
 
     <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search Notes">
-        <button onclick="searchNotes()">Search</button>
+
+    <input type="text" id="searchInput" placeholder="Search Notes">
+
+    <button onclick="searchNotes()">Search</button>
+
+    <div id="searchResults"></div>
+
     </div>
 
     <button class="login-btn">Login</button>
