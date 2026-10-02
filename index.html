@@ -636,34 +636,67 @@ function searchNotes(){
     results.innerHTML = "";
 
     if(search === ""){
-        results.innerHTML = "<p style='text-align:center;'>Please enter a subject or note name.</p>";
+        results.innerHTML =
+            "<p style='text-align:center;padding:10px;'>Please enter a subject or note name.</p>";
         return;
     }
 
     let found = [];
+
+    /* Search subjects */
 
     for(let sem in subjects){
 
         subjects[sem].forEach(function(sub){
 
             if(sub.toLowerCase().includes(search)){
+
                 found.push({
                     name: sub,
-                    semester: sem
+                    subject: sub,
+                    semester: sem,
+                    type: "Subject",
+                    link: null
                 });
+
             }
 
         });
 
     }
 
+
+    /* Search notes and files */
+
+    searchData.forEach(function(item){
+
+        let searchableText =
+            item.name + " " +
+            item.subject + " " +
+            item.type + " " +
+            item.semester;
+
+        if(searchableText.toLowerCase().includes(search)){
+
+            found.push(item);
+
+        }
+
+    });
+
+
+    /* No results */
+
     if(found.length === 0){
 
         results.innerHTML =
-            "<p style='text-align:center;'>❌ No notes found.</p>";
+            "<p style='text-align:center;padding:10px;'>❌ No notes found.</p>";
 
         return;
     }
+
+
+    /* Show results */
 
     found.forEach(function(item){
 
@@ -673,11 +706,34 @@ function searchNotes(){
 
         div.innerHTML =
             "📚 " + item.name +
-            " <small>(Semester " + item.semester + ")</small>";
+            "<small>" +
+            item.subject +
+            " • Semester " +
+            item.semester +
+            "</small>";
+
 
         div.onclick = function(){
 
-            subject(item.name, Number(item.semester));
+            /* Open subject */
+
+            if(item.type === "Subject"){
+
+                subject(
+                    item.name,
+                    Number(item.semester)
+                );
+
+            }
+
+            /* Open PDF / image */
+
+            else{
+
+                window.open(item.link, "_blank");
+
+            }
+
 
             document.getElementById("searchResults").innerHTML = "";
 
@@ -685,9 +741,11 @@ function searchNotes(){
 
         };
 
+
         results.appendChild(div);
 
     });
+
 }
 
 function semester(no){
