@@ -1543,8 +1543,9 @@ style="display:block;text-decoration:none;">
 `;
 
 }
-    //WCMS
-    else if(name === "Web Content Management System"){
+    /* Web Content Management System */
+
+else if(name === "Web Content Management System"){
 
 html+=`
 <h3>WCMS Materials</h3>
@@ -1554,7 +1555,17 @@ style="display:block;text-decoration:none;">
 📘 Syllabus
 </a>
 
-<h3>Unit-wise Notes</h3>
+<div class="item" onclick="showWCMSUnits()">
+📚 Unit Wise Notes
+</div>
+`;
+}
+
+function showWCMSUnits(){
+
+document.getElementById("content").innerHTML=`
+
+<h3>WCMS Unit Wise Notes</h3>
 
 <a href="WCMSunit1Notes.pdf" target="_blank" class="item"
 style="display:block;text-decoration:none;">
@@ -1570,8 +1581,9 @@ style="display:block;text-decoration:none;">
 style="display:block;text-decoration:none;">
 📘 Unit 3 Notes
 </a>
+
 `;
-    }
+}
     
 //* C Programming */
 else if(name === "C Programming"){
